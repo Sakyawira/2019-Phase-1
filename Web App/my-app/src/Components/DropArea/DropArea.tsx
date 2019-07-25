@@ -13,6 +13,7 @@ interface IProps{
 
 export default class DropArea extends React.Component<IProps, IState>{
     constructor(props: any) {
+        // super needs to be called after constructor
         super(props)
         this.state = {
             imageFiles: [],
@@ -44,6 +45,8 @@ export default class DropArea extends React.Component<IProps, IState>{
     public upload(base64String: any) {
         const base64 = require('base64-js');
         const byteArray = base64.toByteArray(base64String);
+
+        // The server is not working
         fetch('https://whatsmyage.azurewebsites.net/image', {
             body: byteArray,
             headers: {
